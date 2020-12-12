@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import {getCurrentTime} from "../Time";
+import { getCurrentTime, getTimeZone, getCurrentDate } from "../Time";
 
 export default function Clock() {
     const [currentTime, setTime] = useState(getCurrentTime());
@@ -9,5 +9,11 @@ export default function Clock() {
         setTime(newCurrentTime);
     });
 
-    return <h1 className="heading">{currentTime}</h1>;
+    return (
+        <div>
+            <h1 className="heading">{currentTime}</h1>
+            <p className="sub-heading">{getCurrentDate()}</p>
+            <p className="sub-heading">{getTimeZone()}</p>
+        </div>
+    );
 }
