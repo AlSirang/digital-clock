@@ -17,32 +17,38 @@ function getTimeZone() {
 }
 
 function getCurrentDate() {
-    const months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-    ];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
-    let date = new Date(Date.now())
-        .toLocaleDateString("en-US", {
-            timeZoneName: "long",
-        })
-        .split(" ")
-        .shift();
-    date = date.split("/");
-    const currentMonth = Number(date[0]) - 1;
-    date[0] = months[currentMonth];
+  let date = new Date(Date.now())
+    .toLocaleDateString("en-US", {
+      timeZoneName: "long",
+    })
+    .split(" ")
+    .shift();
+  date = date.replace(/,/, "").split("/");
+  const currentMonth = Number(date[0]) - 1;
 
-    return date.join(", ");
+  const dateFormated = [
+    date[1], //day
+    months[currentMonth], //month name
+    date[2], //year
+  ];
+
+  return dateFormated.join(", ");
 }
+
 
 export { getCurrentTime, getCurrentYear, getTimeZone, getCurrentDate };
