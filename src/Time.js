@@ -32,7 +32,7 @@ function getCurrentDate() {
         "Dec",
     ];
 
-    let date = new Date("12/23/2020")
+    let date = new Date(Date.now())
         .toLocaleDateString("en-US", {
             timeZoneName: "long",
         })
@@ -44,4 +44,5 @@ function getCurrentDate() {
 
     return date.join(", ");
 }
+
 export { getCurrentTime, getCurrentYear, getTimeZone, getCurrentDate };
